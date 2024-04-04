@@ -1,0 +1,17 @@
+
+{% extends 'index6.1.html' %}
+
+    {% block title %}
+        file_7 title
+    {% endblock %}
+
+    {% block content %}
+        {% for student in students %}
+            <p>
+                {{ student.name }}<br/>
+                {{ student.surname }}<br/>
+                {{ student.age }}<br/>
+                {{ student.point_avg }}<br/>
+            </p>
+        {% endfor %}
+    {% endblock %}

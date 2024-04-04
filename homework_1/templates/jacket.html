@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h2>Куртки</h2>
+  <p>Идеальные куртки для любого времени года и любой погоды.</p>
+
+  <div class="product-grid">
+    <!-- Представление товаров категории "Куртки" -->
+    {% for jacket in jackets %}
+      <div class="product">
+        <img src="{{ url_for('static', filename=jacket.image) }}" alt="{{ jacket.name }}">
+        <h3><a href="{{ url_for('jacket_detail', id=jacket.id) }}">{{ jacket.name }}</a></h3>
+        <p>{{ jacket.description }}</p>
+        <p>Цена: {{ jacket.price }} руб.</p>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
