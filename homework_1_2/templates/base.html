@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Интернет-магазин{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Интернет-магазин</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/category/clothes">Одежда</a></li>
+                <li><a href="/category/shoes">Обувь</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    
+    <footer>
+        <p>© 2023 Интернет-магазин</p>
+    </footer>
+</body>
+</html>
