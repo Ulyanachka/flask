@@ -22,12 +22,12 @@ users = sqlalchemy.Table(
     sqlalchemy.Column("password", sqlalchemy.String(120)),
 )
 
-product = sqlalchemy.Table(
+goods = sqlalchemy.Table(
     "goods",
     metadata,
     sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
-    sqlalchemy.Column("name", sqlalchemy.String(50)),
-    sqlalchemy.Column("description", sqlalchemy.String(200)),
+    sqlalchemy.Column("name", sqlalchemy.String(15)),
+    sqlalchemy.Column("description", sqlalchemy.String(100)),
     sqlalchemy.Column("price", sqlalchemy.Float)
 )
 
