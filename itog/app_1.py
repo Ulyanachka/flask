@@ -1,10 +1,10 @@
-from datetime import datetime, timedelta, date
 import random
 from typing import List
 from fastapi import FastAPI, Path
-from pydantic import BaseModel, Field
 import sqlalchemy
 import databases
+from datetime import datetime, timedelta, date
+from pydantic import BaseModel, Field
 
 DATABASE_URL = "sqlite:///second.db"
 database = databases.Database(DATABASE_URL)
@@ -16,10 +16,10 @@ users = sqlalchemy.Table(
     "users",
     metadata,
     sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
-    sqlalchemy.Column("name", sqlalchemy.String(50)),
-    sqlalchemy.Column("surname", sqlalchemy.String(50)),
+    sqlalchemy.Column("name", sqlalchemy.String(20)),
+    sqlalchemy.Column("surname", sqlalchemy.String(20)),
     sqlalchemy.Column("email", sqlalchemy.String(50)),
-    sqlalchemy.Column("password", sqlalchemy.String(120)),
+    sqlalchemy.Column("password", sqlalchemy.String(30)),
 )
 
 goods = sqlalchemy.Table(
@@ -108,10 +108,7 @@ async def root():
 @app.get('/fake_users/{count}')
 async def create_users(count: int):
     for i in range(count):
-        query = users.insert().values(name=f'user{i}',
-                                      surname=f'user{i}',
-                                      email=f'email{i}@mail.ru',
-                                      password=f'qwerty{i}')
+        query = users.insert().values(name=f'user{i}',surname=f'user{i}',email=f'email{i}@mail.ru',password=f'qwerty{i}')      
         await database.execute(query)
     return {'message': f'{count} fake users was created and inserted into db'}
 
